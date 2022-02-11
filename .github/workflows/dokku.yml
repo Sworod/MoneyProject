@@ -1,10 +1,15 @@
-name: tbot_build
+name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
       with:
@@ -12,7 +17,7 @@ jobs:
 
     - id: deploy
       name: Deploy to dokku
-      uses: sworod/dokku-deploy-github-action@v1
+      uses: idoberko2/dokku-deploy-github-action@v1
       with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           dokku-host: 'ksenofontov-pa.ru'
