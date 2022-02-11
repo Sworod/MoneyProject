@@ -1,2 +1,3 @@
 release: python manage.py migrate --noinput
 web: gunicorn --bind :$PORT MoneyProj.asgi:application
+bot: python run_pooling.py
